@@ -28,9 +28,9 @@ type ChIPSeqEitherTag tag1 tag2 filetype = Either (ChIPSeq S (File tag1 filetype
                                                   (ChIPSeq S (File tag2 filetype))
 
 chipGetPeak :: [ChIPSeqWithSomeFile]
-            -> [ Either (ChIPSeq S (File '[] 'NarrowPeak))
-                        (ChIPSeq S (File '[] 'BroadPeak)) ]
-chipGetPeak inputs = concatMap split $ concatMap split $ concatMap split $
+            -> [ ChIPSeq S (Either (File '[] 'NarrowPeak)
+                                   (File '[] 'BroadPeak)) ]
+chipGetPeak inputs = concatMap split $ concatMap split $
     inputs & mapped.replicates.mapped.files %~ f
   where
     f fls = flip mapMaybe (lefts fls) $ \fl ->
