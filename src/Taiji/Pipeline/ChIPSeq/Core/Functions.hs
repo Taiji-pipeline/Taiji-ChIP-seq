@@ -9,7 +9,6 @@ module Taiji.Pipeline.ChIPSeq.Core.Functions
     ) where
 
 import           Bio.Data.Experiment
-import           Bio.Pipeline.NGS
 import           Bio.Pipeline.NGS.Utils
 import           Bio.Pipeline.Utils
 import           Control.Lens
